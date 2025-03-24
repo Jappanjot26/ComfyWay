@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import HeaderComponent from "../components/HeaderComponent";
 import StatsComponent from "../components/StatsComponent";
+import { useNavigate } from "react-router-dom";
 
 const houseImages = [
   "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80", // Modern house with pool
@@ -8,8 +9,11 @@ const houseImages = [
   "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80", // Cozy house with garden
 ];
 
+const locations = ["Delhi, India", "Goa, India", "Hyderabad, India"];
+
 const App = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const navigate = useNavigate();
 
   const handleImageChange = (direction) => {
     if (direction === "next") {
@@ -27,32 +31,42 @@ const App = () => {
     <div
       className="min-h-screen bg-cover bg-center flex items-center justify-center transition-all duration-500 ease-in-out"
       style={{
-        backgroundImage: `url('${houseImages[currentImageIndex]}')`,
+        backgroundImage: `url('${
+          houseImages[(currentImageIndex + 2) % houseImages.length]
+        }')`,
       }}
     >
-      <div className="bg-white rounded-[40px] shadow-xl shadow-black p-8 max-w-5xl w-full flex flex-col md:flex-row">
+      <div className="bg-white rounded-[40px] shadow-2xl drop-shadow-black p-8 max-w-5xl w-full flex flex-col md:flex-row">
         <div className="flex-1 pr-0 md:pr-8">
           <HeaderComponent />
           <StatsComponent />
 
-          <div className="relative mb-6">
-            <button className="bg-gray-100 text-gray-600 text-sm font-medium px-4 py-1 rounded-full mb-3">
-              DELHI, INDIA
-            </button>
-            <div className="relative">
-              <div className="relative w-full h-48">
+          <div className="relative ">
+            <div>
+              <div className="w-full h-64">
                 <img
                   src={houseImages[currentImageIndex]}
                   alt="House"
-                  className="w-full h-full object-cover rounded-xl absolute top-0 left-0 z-10 transition-opacity duration-500 ease-in-out"
+                  className="w-full h-full object-cover rounded-xl transition-opacity duration-500 ease-in-out drop-shadow-lg absolute top-1.5 left-1.5 opacity-25"
                 />
                 <img
                   src={
                     houseImages[(currentImageIndex + 1) % houseImages.length]
                   }
                   alt="House Next"
-                  className="w-full h-full object-cover rounded-xl absolute top-2 left-2 z-0 opacity-50 transition-opacity duration-500 ease-in-out"
+                  className="w-full h-full object-cover rounded-xl  opacity-55 transition-opacity duration-500 static ease-in-out"
                 />
+                <img
+                  src={
+                    houseImages[(currentImageIndex + 2) % houseImages.length]
+                  }
+                  alt="House"
+                  className="w-full h-full object-cover rounded-xl transition-opacity duration-500 ease-in-out drop-shadow-lg absolute -top-2 -left-2"
+                />
+
+                <div className="bg-gray-100 text-gray-600 text-sm font-medium px-4 py-1 rounded-full mb-3 absolute top-2 left-2">
+                  {locations[currentImageIndex]}
+                </div>
               </div>
 
               <div className="absolute top-1/2 right-4 transform -translate-y-1/2 flex flex-col space-y-2 z-20">
@@ -101,22 +115,30 @@ const App = () => {
 
         <div className="flex-1 flex items-center">
           <div className="w-full h-full flex flex-col">
-            <button className="bg-gray-100 text-gray-600 text-sm font-medium px-4 py-1 rounded-full mb-4 self-end">
-              Goa, India
-            </button>
-            <div className="relative w-full flex-1">
+            <div className="relative w-full h-full">
               <img
-                src={houseImages[currentImageIndex]}
+                src={houseImages[(currentImageIndex + 2) % houseImages.length]}
                 alt="House"
                 className="w-full h-full object-cover rounded-xl transition-opacity duration-500 ease-in-out"
               />
-              <div className="absolute bottom-4 left-4 right-4 flex flex-col space-y-4">
-                <p className="text-white text-sm leading-relaxed border-l-4 border-black pl-4 bg-gradient-to-b from-black/20 via-gray-800/10 to-gray-600/10">
-                  Enjoy a luxurious vacation in a villa with breathtaking city
-                  views and easy access to the vibrant city life and culinary
-                  delights.
-                </p>
-                <div className="relative w-full">
+              <div className="bg-gray-100 text-gray-600 text-sm font-medium px-4 py-1 rounded-full mb-4 self-end absolute top-4 left-4">
+                {locations[currentImageIndex]}
+              </div>
+              <div className="absolute bottom-4 left-4 right-4 flex flex-col space-y-4 ">
+                <div className=" bg-black/5 py-2 ">
+                  <p className="text-white text-sm leading-relaxed border-l-4 border-black pl-4 ">
+                    Enjoy a luxurious vacation in a villa with breathtaking city
+                    views and easy access to the vibrant city life and culinary
+                    delights.
+                  </p>
+                </div>
+                <form
+                  className="relative w-full"
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    navigate("/login");
+                  }}
+                >
                   <input
                     type="text"
                     placeholder="Enter Location"
@@ -138,7 +160,7 @@ const App = () => {
                       />
                     </svg>
                   </button>
-                </div>
+                </form>
               </div>
             </div>
           </div>
