@@ -4,13 +4,30 @@ import { ToastContainer } from "react-toastify";
 import { handleError, handleSuccess } from "../components/utils";
 import register from "../assets/register.svg";
 import logo from "../assets/logo.png";
+import { auth, provider, signInWithPopup } from "../../firebase";
 
 export default function Register() {
+  const [googleClicked, setGoogleClicked] = useState(false);
   const [info, setInfo] = useState({
     email: "",
     password: "",
   });
   const navigate = useNavigate();
+  const handleGoogleSignin = async () => {
+    try {
+      setGoogleClicked(true);
+
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ ...user, apiKey: undefined, auth: undefined })
+      );
+      navigate("/home");
+    } catch (error) {
+      console.error("Login Failed:", error);
+    }
+  };
 
   const handleChange = (e) => {
     setInfo({ ...info, [e.target.name]: e.target.value });
@@ -18,6 +35,11 @@ export default function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (googleClicked) {
+      setGoogleClicked((c) => !c);
+      return;
+    }
+
     const { email, password } = info;
     if (!email || !password) {
       return handleError("Please fill all the fields");
@@ -37,6 +59,7 @@ export default function Register() {
       console.log(res);
       if (res.success) {
         handleSuccess(res.message);
+        localStorage.setItem("user", res.email);
         setTimeout(() => {
           navigate("/login");
         }, 1000);
@@ -68,7 +91,10 @@ export default function Register() {
             onSubmit={handleSubmit}
           >
             <div className="flex flex-col items-center my-8  self-center w-full ">
-              <button className="gsi-material-button">
+              <button
+                className="gsi-material-button"
+                onClick={handleGoogleSignin}
+              >
                 <div className="gsi-material-button-state"></div>
                 <div className="gsi-material-button-content-wrapper">
                   <div className="gsi-material-button-icon">

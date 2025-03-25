@@ -1,9 +1,25 @@
 import Logo from "../assets/logo.png";
+import { auth, signOut } from "../../firebase";
+
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+
 function Navbar({ children }) {
-  function handleLogout() {
-    localStorage.removeItem("loggedInUser");
-    window.location.reload();
-  }
+  const navigate = useNavigate();
+  const [user, setUser] = useState({});
+
+  const handleLogout = async () => {
+    await signOut(auth);
+    localStorage.removeItem("user");
+    navigate("/login");
+  };
+  useEffect(() => {
+    async function fetchUser() {
+      const temp = await JSON.parse(localStorage.getItem("user"));
+      setUser(temp);
+    }
+    fetchUser();
+  }, []);
   return (
     <nav className="bg-white rounded-t-2xl h-1/12">
       <div className="flex justify-between items-center h-full px-4">
@@ -34,14 +50,30 @@ function Navbar({ children }) {
           </div>
         </div>
         <div className="flex justify-center items-center">
-          {/* <button className="rounded-lg p-1 text-xl">🛒</button> */}
-          <button className="rounded-lg p-1 text-xl cursor-pointer">Ⓜ️</button>
-          {/* <button className="rounded-lg p-1 text-xl">⚙️</button> */}
+          <button className="rounded-lg p-1 text-xl cursor-pointer">
+            {user?.photoURL ? (
+              <img
+                src={user.photoURL}
+                alt="User Image"
+                referrerpolicy="no-referrer"
+                className="h-8 w-8 rounded-full"
+              />
+            ) : (
+              "Ⓜ️"
+            )}
+          </button>
+
           <button
             className="rounded-lg p-1 text-xl cursor-pointer"
             onClick={handleLogout}
           >
-            ↪️
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-8 p-1.5 bg-[#2b7fff] fill-white rounded-full"
+              viewBox="0 0 256 256"
+            >
+              <path d="M120,216a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V40a8,8,0,0,1,8-8h64a8,8,0,0,1,0,16H56V208h56A8,8,0,0,1,120,216Zm109.66-93.66-40-40a8,8,0,0,0-11.32,11.32L204.69,120H112a8,8,0,0,0,0,16h92.69l-26.35,26.34a8,8,0,0,0,11.32,11.32l40-40A8,8,0,0,0,229.66,122.34Z"></path>
+            </svg>
           </button>
         </div>
       </div>

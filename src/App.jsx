@@ -24,7 +24,7 @@ function App() {
   };
 
   useEffect(() => {
-    if (localStorage.getItem("loggedInUser")) {
+    if (localStorage.getItem("user")) {
       setIsAuthenticated(true);
       if (
         location.pathname === "/login" ||
