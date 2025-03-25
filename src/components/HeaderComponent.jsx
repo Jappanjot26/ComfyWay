@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 const HeaderComponent = () => {
   return (
     <div className="mb-8">
-      <h1 className="text-5xl font-bold mb-3 tracking-tight pt-2 pb-2">
-        Reserve Your Ideal Holiday
+      <h1 className="text-4xl font-bold mb-3 tracking-tight pt-2 pb-2 leading-12">
+        Reserve Your Ideal Holiday by ComfyWay
       </h1>
       <div className="flex items-center pr-2 justify-between">
         <p className="text-gray-500 text-sm mb-2 font-semibold ">

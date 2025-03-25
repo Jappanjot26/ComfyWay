@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import HeaderComponent from "../components/HeaderComponent";
 import StatsComponent from "../components/StatsComponent";
 import { useNavigate } from "react-router-dom";
+import logo from "../assets/logo.png";
 
 const houseImages = [
   "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80", // Modern house with pool
@@ -29,13 +30,17 @@ const App = () => {
 
   return (
     <div
-      className="min-h-screen bg-cover bg-center flex items-center justify-center transition-all duration-500 ease-in-out"
+      className="min-h-screen bg-cover bg-center relative flex items-center justify-center transition-all duration-500 ease-in-out"
       style={{
         backgroundImage: `url('${
           houseImages[(currentImageIndex + 2) % houseImages.length]
         }')`,
       }}
     >
+      {/* <img
+        src={logo}
+        className="absolute top-0 left-5 h-34 w-36 drop-shadow-lg"
+      /> */}
       <div className="bg-white rounded-[40px] shadow-2xl drop-shadow-black p-8 max-w-5xl w-full flex flex-col md:flex-row">
         <div className="flex-1 pr-0 md:pr-8">
           <HeaderComponent />
