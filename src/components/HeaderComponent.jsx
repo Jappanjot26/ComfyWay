@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const HeaderComponent = () => {
   return (
@@ -16,8 +17,11 @@ const HeaderComponent = () => {
         We specialize in curating exceptional villa rentals, providing an
         unparalleled level of comfort, privacy, and convenience for your dream
         vacation.
-        <button className="bg-black text-white text-sm font-medium px-6 py-2 rounded-full flex items-center hover:bg-gray-800 transition h-12">
-          MORE
+        <Link
+          className="bg-black text-white text-sm font-medium px-6 py-2 rounded-full flex items-center hover:bg-gray-800 transition h-12"
+          to="/login"
+        >
+          Login
           <svg
             className="w-5 h-5 ml-2"
             fill="none"
@@ -32,7 +36,7 @@ const HeaderComponent = () => {
               d="M9 5l7 7-7 7"
             />
           </svg>
-        </button>
+        </Link>
       </p>
     </div>
   );

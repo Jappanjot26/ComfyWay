@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import login from "../assets/login.svg";
+import logo from "../assets/logo.png";
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
 import { handleError, handleSuccess } from "../components/utils";
@@ -49,51 +50,101 @@ function Login() {
     }
   };
   return (
-    <section className="h-screen flex flex-col md:flex-row justify-center space-y-10 md:space-y-0 md:space-x-16 items-center py-2 px-5 md:mx-0 md:my-0 bg-white relative">
-      <div className="md:w-1/3 max-w-sm">
-        <img
-          src={login}
-          alt="Sample image"
-          className="max-md:h-72 max-md:w-72"
-        />
-      </div>
-      <form className="md:w-1/3 max-w-sm" onSubmit={handleSubmit}>
-        <input
-          className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded focus:outline-none focus:ring focus:border-blue-300"
-          type="email"
-          id="email"
-          name="email"
-          value={info.email}
-          onChange={handleChange}
-          placeholder="Email Address"
-        />
-        <input
-          className="text-sm w-full px-4 py-2 border border-solid border-gray-300 rounded mt-4 focus:outline-none focus:ring focus:border-blue-300"
-          type="password"
-          id="password"
-          name="password"
-          onChange={handleChange}
-          value={info.password}
-          placeholder="Password"
-        />
-        <div className="text-center md:text-left flex justify-center">
-          <button
-            className="mt-4 bg-blue-600 hover:bg-blue-700 px-4 py-2 text-white uppercase rounded text-xs tracking-wider"
-            type="submit"
-          >
-            Login
-          </button>
-        </div>
-        <div className="mt-4 font-semibold text-sm text-slate-500 text-center md:text-left">
-          {"Don't have an account?"}
-          <Link
-            className="text-red-600 hover:underline hover:underline-offset-4"
-            to="/register"
-          >
-            Register
+    <section className="h-screen w-screen">
+      <div className="flex w-full h-full">
+        <div className="w-5/8 flex flex-col">
+          <Link to="/">
+            <img src={logo} alt="logo" className="h-34 mx-12 w-36" />
           </Link>
+          <img src={login} alt="Login page image" className="h-9/12" />
         </div>
-      </form>
+        <div className="w-3/8 flex flex-col bg-[#2c56fe] py-24">
+          <h1 className="uppercase text-white font-semibold text-4xl text-center">
+            Login
+          </h1>
+          <form
+            className="border-y-1 border-white/30 mx-4 px-12 my-4 flex flex-col justify-center py-12 items"
+            onSubmit={handleSubmit}
+          >
+            <div className="flex flex-col items-center my-8  self-center w-full ">
+              <button className="gsi-material-button">
+                <div className="gsi-material-button-state"></div>
+                <div className="gsi-material-button-content-wrapper">
+                  <div className="gsi-material-button-icon">
+                    <svg
+                      version="1.1"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 48 48"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                      style={{ display: "block" }}
+                    >
+                      <path
+                        fill="#EA4335"
+                        d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"
+                      ></path>
+                      <path
+                        fill="#4285F4"
+                        d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"
+                      ></path>
+                      <path
+                        fill="#FBBC05"
+                        d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"
+                      ></path>
+                      <path
+                        fill="#34A853"
+                        d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"
+                      ></path>
+                      <path fill="none" d="M0 0h48v48H0z"></path>
+                    </svg>
+                  </div>
+                  <span className="gsi-material-button-contents">
+                    Sign in with Google
+                  </span>
+                  <span style={{ display: "none" }}>Sign in with Google</span>
+                </div>
+              </button>
+            </div>
+            <div className="flex items-center gap-2 text-white">
+              <div className="w-full h-0.5 bg-white/30"></div>
+              <div className="">OR</div>
+              <div className="w-full h-0.5 bg-white/30"></div>
+            </div>
+            <input
+              type="email"
+              placeholder="Email"
+              id="email"
+              name="email"
+              onChange={handleChange}
+              value={info.email}
+              className="w-full h-10 border-1 border-white/80 px-2 mt-8 mb-3 text-white focus:outline-white focus:outline-1"
+            />
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Password"
+              onChange={handleChange}
+              value={info.password}
+              className="w-full h-10 border-1 border-white/80 px-2 focus:outline-white focus:outline-1 text-white color-white"
+            />
+            <button
+              type="submit"
+              className="bg-white hover:bg-gray-100 h-10 w-full mt-8 mb-2"
+            >
+              Submit
+            </button>
+            <div className="mt-4 font-semibold text-sm text-white self-center text-center md:text-left">
+              {"Don't have an account? "}
+              <Link
+                className="text-[#60ff41] hover:underline hover:underline-offset-4"
+                to="/register"
+              >
+                Register
+              </Link>
+            </div>
+          </form>
+        </div>
+      </div>
       <ToastContainer />
     </section>
   );
