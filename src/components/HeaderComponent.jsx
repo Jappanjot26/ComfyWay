@@ -18,12 +18,12 @@ const HeaderComponent = () => {
         unparalleled level of comfort, privacy, and convenience for your dream
         vacation.
         <Link
-          className="bg-black text-white text-sm font-medium px-6 py-2 rounded-full flex items-center hover:bg-gray-800 transition h-12"
+          className="bg-black text-white text-sm font-medium px-6 py-2 rounded-full flex items-center hover:bg-[#0f0f0f] transition duration-150 h-12 group hover:drop-shadow-xl"
           to="/login"
         >
-          Login
+          <p className="group-hover:text-[#fffffff5] text-[16px]">Login</p>
           <svg
-            className="w-5 h-5 ml-2"
+            className="w-5 h-5 ml-2 transition-transform duration-300 group-hover:-rotate-45"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

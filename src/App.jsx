@@ -2,6 +2,7 @@ import Home from "./pages/Home.jsx";
 import InitialPage from "./pages/Initial.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
+import Admin from "./pages/Admin.jsx";
 import {
   Routes,
   Route,
@@ -42,6 +43,7 @@ function App() {
         <Route path="/" element={<InitialPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/admin" element={<Admin />} />
         <Route path="/home" element={<PrivateRoute element={<Home />} />} />
       </Routes>
     </div>

@@ -77,7 +77,7 @@ const App = () => {
               <div className="absolute top-1/2 right-4 transform -translate-y-1/2 flex flex-col space-y-2 z-20">
                 <button
                   onClick={() => handleImageChange("prev")}
-                  className="bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition"
+                  className="bg-white p-2 rounded-full shadow-md hover:scale-105 transition duration-150"
                 >
                   <svg
                     className="w-5 h-5 text-gray-600"
@@ -96,7 +96,7 @@ const App = () => {
                 </button>
                 <button
                   onClick={() => handleImageChange("next")}
-                  className="bg-white p-2 rounded-full shadow-md hover:bg-gray-100 transition"
+                  className="bg-white p-2 rounded-full shadow-md hover:scale-105 transition duration-150"
                 >
                   <svg
                     className="w-5 h-5 text-gray-600"
