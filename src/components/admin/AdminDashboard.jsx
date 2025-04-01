@@ -1,12 +1,13 @@
-import Table from "./Table";
+import Table from "../utilities/Table";
+import TableListing from "../utilities/TableListing";
 
 function AdminDashboard() {
   return (
     <div className="h-11/12 w-3/4 bg-gray-100 overflow-y-scroll flex flex-col p-4">
-      <div className="flex py-4 px-4 gap-4">
+      <div className="flex py-4 px-8 gap-4">
         <div className="h-32 w-64 bg-gradient-to-r from-blue-500 to-blue-400 rounded-lg flex justify-between p-4 fill-white text-white text-xl items-center font-semibold">
           <div className="flex flex-col gap-1">
-            <p className="text-4xl font-bold">102</p>
+            <p className="text-4xl font-bold">125</p>
             <p>Bookings</p>
           </div>
           <svg
@@ -19,7 +20,7 @@ function AdminDashboard() {
         </div>
         <div className="h-32 w-64 bg-gradient-to-r from-green-500 to-green-400 rounded-lg flex justify-between p-4 fill-white text-white text-xl items-center font-semibold">
           <div className="flex flex-col gap-1">
-            <p className="text-4xl font-bold">102</p>
+            <p className="text-4xl font-bold">82</p>
             <p>Unique Users</p>
           </div>
           <svg
@@ -32,7 +33,7 @@ function AdminDashboard() {
         </div>
         <div className="h-32 w-64 bg-gradient-to-r from-yellow-500 to-yellow-400 rounded-lg flex justify-between p-4 fill-white text-white text-xl items-center font-semibold">
           <div className="flex flex-col gap-1">
-            <p className="text-4xl font-bold">102</p>
+            <p className="text-4xl font-bold">8</p>
             <p>Listings</p>
           </div>
           <svg
@@ -45,7 +46,7 @@ function AdminDashboard() {
         </div>
         <div className="h-32 w-64 bg-gradient-to-r from-orange-500 to-orange-400 rounded-lg flex justify-between p-4 fill-white text-white text-xl items-center font-semibold">
           <div className="flex flex-col gap-1">
-            <p className="text-4xl font-bold">102</p>
+            <p className="text-4xl font-bold">2.4 L</p>
             <p>Revenue</p>
           </div>
           <svg
@@ -57,7 +58,14 @@ function AdminDashboard() {
           </svg>
         </div>
       </div>
+      <div className="text-gray-500 text-2xl font-semibold px-8 pt-8 pb-2">
+        Bookings
+      </div>
       <Table hideSearch={true} />
+      <div className="text-gray-500 text-2xl font-semibold px-8 pt-8 pb-2">
+        Listings
+      </div>
+      <TableListing hideSearch={true} />
     </div>
   );
 }

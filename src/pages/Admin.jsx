@@ -1,6 +1,6 @@
-import AdminNavbar from "../components/AdminNavbar";
-import AdminSidebar from "../components/AdminSidebar";
-import AdminDashboard from "../components/AdminDashboard";
+import AdminNavbar from "../components/admin/AdminNavbar";
+import AdminSidebar from "../components/admin/AdminSidebar";
+import AdminDashboard from "../components/admin/AdminDashboard";
 
 function Admin() {
   return (

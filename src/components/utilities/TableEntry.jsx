@@ -1,10 +1,13 @@
+import { useEffect, useState } from "react";
+
 function TableEntry({ data }) {
-  const statusColor =
-    data.status === "paid"
+  function color(currStatus) {
+    return currStatus === "paid"
       ? "green"
-      : data.status === "unpaid"
+      : currStatus === "unpaid"
       ? "red"
       : "orange";
+  }
 
   return (
     <tr>
@@ -33,11 +36,15 @@ function TableEntry({ data }) {
       </td>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
         <span
-          className={`relative inline-block px-3 py-1 font-semibold text-${statusColor}-900 leading-tight`}
+          className={`relative inline-block px-3 py-1 font-semibold text-${color(
+            data.status
+          )}-900 leading-tight`}
         >
           <span
             aria-hidden
-            className={`absolute inset-0 bg-${statusColor}-200 opacity-50 rounded-full`}
+            className={`absolute inset-0 bg-${color(
+              data.status
+            )}-200 opacity-50 rounded-full`}
           ></span>
           <span className="relative">{data.status}</span>
         </span>

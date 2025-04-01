@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import { handleError, handleSuccess } from "../components/utils";
+import { handleError, handleSuccess } from "../components/utilities/utils";
 import register from "../assets/register.svg";
 import logo from "../assets/logo.png";
 import { auth, provider, signInWithPopup } from "../../firebase";

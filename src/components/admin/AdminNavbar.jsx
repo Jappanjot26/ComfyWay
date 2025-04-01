@@ -1,4 +1,4 @@
-import logo from "../assets/logo.png";
+import logo from "../../assets/logo.png";
 
 function AdminNavbar() {
   return (
@@ -6,7 +6,7 @@ function AdminNavbar() {
       <div className="h-28 w-30">
         <img src={logo} alt="" />
       </div>
-      <div className="">hgbhu</div>
+      <div className="text-2xl">Ⓜ️</div>
     </nav>
   );
 }

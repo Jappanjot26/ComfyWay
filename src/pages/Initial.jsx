@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import HeaderComponent from "../components/HeaderComponent";
-import StatsComponent from "../components/StatsComponent";
+import HeaderComponent from "../components/ui/HeaderComponent";
+import StatsComponent from "../components/ui/StatsComponent";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 

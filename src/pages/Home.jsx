@@ -1,6 +1,6 @@
-import Navbar from "../components/Navbar";
-import Body from "../components/Body";
-import HotelCard from "../components/HotelCard";
+import Navbar from "../components/ui/Navbar";
+import Body from "../components/utilities/Body";
+import HotelCard from "../components/utilities/HotelCard";
 
 const data = [
   {

@@ -3,7 +3,7 @@ import login from "../assets/login.svg";
 import logo from "../assets/logo.png";
 import { useState } from "react";
 import { ToastContainer } from "react-toastify";
-import { handleError, handleSuccess } from "../components/utils";
+import { handleError, handleSuccess } from "../components/utilities/utils";
 import { auth, provider, signInWithPopup } from "../../firebase";
 
 function Login() {

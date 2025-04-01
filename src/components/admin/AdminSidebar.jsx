@@ -1,5 +1,5 @@
 import { useState } from "react";
-import profile from "../assets/profile-icon.png";
+import profile from "../../assets/profile-icon.png";
 
 function AdminSidebar() {
   const [clickedListings, getClickedListings] = useState(false);
