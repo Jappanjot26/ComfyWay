@@ -129,66 +129,7 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      {/* Featured Hotels Section */}
-      <section className="py-20 bg-gray-50 dark:bg-gray-800">
-        <div className="container-custom">
-          <div className="flex justify-between items-end mb-12">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
-                Featured Properties
-              </h2>
-              <p className="text-lg text-gray-600 dark:text-gray-400">
-                Discover our most popular accommodations.
-              </p>
-            </div>
-            <Link
-              to="/hotels"
-              className="text-primary-500 hover:text-primary-600 dark:text-primary-400 dark:hover:text-primary-300 font-medium flex items-center"
-            >
-              View All
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 ml-1"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
-            </Link>
-          </div>
-
-          {loading ? (
-            <div className="flex justify-center items-center h-64">
-              <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary-500"></div>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {featuredHotels.map((hotel) => (
-                <div key={hotel.id} className="featured-hotel-card">
-                  <Link
-                    to={`/hotels/${hotel.id}`}
-                    className="featured-hotel-link"
-                  >
-                    <img
-                      src={hotel.image}
-                      alt={hotel.name}
-                      className="featured-hotel-image"
-                    />
-                    <h3 className="featured-hotel-name">{hotel.name}</h3>
-                    <p className="featured-hotel-location">{hotel.location}</p>
-                  </Link>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
+     
       {/* Premium Section */}
       <section className="py-20 bg-primary-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
